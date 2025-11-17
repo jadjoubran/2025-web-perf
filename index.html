@@ -59,15 +59,66 @@
       }
     </script>
     <!-- SLIDER -->
-    <div id="2"></div>
-    <script>
-      load("slider.html");
-      function load(url) {
-        req = new XMLHttpRequest();
-        req.open("GET", url, false);
-        req.send(null);
-        document.getElementById(2).innerHTML = req.responseText;
+    <style>
+      body {
+        margin: 0;
       }
+      #containerSlider {
+        margin: auto;
+        width: 90%;
+        text-align: center;
+        padding-top: 100px;
+        box-sizing: border-box;
+      }
+      #containerSlider img {
+        width: 100%;
+        height: 140%;
+        text-align: center;
+        align-content: center;
+      }
+      @media (max-width: 732px) {
+        #containerSlider img {
+          height: 12em;
+        }
+      }
+      @media (max-width: 500px) {
+        #containerSlider img {
+          height: 10em;
+        }
+      }
+    </style>
+    <section>
+      <div id="containerSlider">
+        <div id="slidingImage">
+          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img1.png -->
+          <img src="img/img1.png" loading="eager" alt="image1" />
+        </div>
+        <div id="slidingImage">
+          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721347/fh-salzburg/web-performance/img2.png -->
+          <img src="img/img2.png" loading="lazy" alt="image2" />
+        </div>
+        <div id="slidingImage">
+          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img3.png -->
+          <img src="img/img3.png" loading="lazy" alt="image3" />
+        </div>
+        <div id="slidingImage">
+          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img4.png -->
+          <img src="img/img4.png" loading="lazy" alt="image4" />
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#containerSlider").slick({
+          dots: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+        });
+      });
     </script>
 
     <!-- CONTENT SECTION -->
@@ -111,22 +162,6 @@
       }
     </script>
   </body>
-
-  <!-- slider JS START -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#containerSlider").slick({
-        dots: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1500,
-      });
-    });
-  </script>
-  <!-- slider JS ENDS -->
 
   <!-- content JS -->
   <script
