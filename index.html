@@ -14,11 +14,6 @@
       sizes="16x16"
     />
     <!-- header links -->
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=1234567890"
-    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -33,16 +28,7 @@
       rel="stylesheet"
     />
     <!-- slider links -->
-    <!-- <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
-    />
   </head>
 
   <body>
@@ -355,8 +341,19 @@
       }
     </style>
     <section>
+      <style>
+        #containerSlider {
+          display: grid;
+          grid-template-columns: repeat(4, 100%);
+          overflow-x: scroll;
+          scroll-snap-type: x mandatory;
+        }
+        .slidingImage {
+          scroll-snap-align: start;
+        }
+      </style>
       <div id="containerSlider">
-        <div id="slidingImage">
+        <div class="slidingImage">
           <img
             src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img1.png"
             loading="eager"
@@ -364,21 +361,21 @@
             alt="image1"
           />
         </div>
-        <div id="slidingImage">
+        <div class="slidingImage">
           <img
             src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721347/fh-salzburg/web-performance/img2.png"
             loading="lazy"
             alt="image2"
           />
         </div>
-        <div id="slidingImage">
+        <div class="slidingImage">
           <img
             src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img3.png"
             loading="lazy"
             alt="image3"
           />
         </div>
-        <div id="slidingImage">
+        <div class="slidingImage">
           <img
             src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img4.png"
             loading="lazy"
@@ -387,19 +384,6 @@
         </div>
       </div>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#containerSlider").slick({
-          dots: true,
-          infinite: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-        });
-      });
-    </script>
     <style>
       h1 {
         width: 90%;
@@ -681,9 +665,13 @@
   </body>
 
   <!-- content JS -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=1234567890"
-  ></script>
+  <script>
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=1234567890";
+    script.async = true; // optional
+    setTimeout(() => {
+      document.head.appendChild(script);
+    }, 2000);
+  </script>
   <script src="content.js" type="module"></script>
 </html>
