@@ -47,16 +47,284 @@
 
   <body>
     <!-- HEADER -->
-    <div id="1"></div>
-    <script>
-      load("header.html");
-      function load(url) {
-        req = new XMLHttpRequest();
-        req.open("GET", url, false);
-        req.send(null);
-        document.getElementById(1).innerHTML = req.responseText;
+    <style>
+      #badge {
+        position: absolute;
+        background-color: rgb(255, 30, 30);
+        color: white;
+        border-radius: 50%;
+        padding: 5px 8px;
+        font-size: 14px;
+        top: 10px;
+        right: 158px;
       }
-    </script>
+      #container {
+        background-color: white;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1.5fr 1.5fr 5fr 1fr;
+        font-family: "Lato", sans-serif;
+        z-index: 1;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        position: fixed;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+          0 2px 6px 2px rgba(60, 64, 67, 0.149);
+      }
+      #shopName {
+        font-size: 40px;
+        font-family: "Lato", sans-serif;
+      }
+      #shopName a {
+        text-decoration: none;
+        color: rgb(29, 29, 29);
+      }
+      #shopName > b {
+        font-weight: 900;
+        font: black;
+      }
+
+      #collection {
+        font-weight: bold;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      #collection a {
+        text-decoration: none;
+        color: rgb(29, 29, 29);
+      }
+
+      .search {
+        padding: 14px;
+        /* color: gray; */
+        color: rgb(29, 29, 29);
+        min-width: 25px;
+        text-align: center;
+        position: absolute;
+      }
+
+      .addedToCart {
+        font-size: 1.5em;
+        margin-right: 25px;
+      }
+      #user {
+        display: flex;
+        /* float: right; */
+        align-items: center;
+      }
+
+      .userIcon {
+        font-size: 45px;
+      }
+      #input {
+        width: 35em;
+        height: 3em;
+        padding: 2px 50px;
+        background-color: rgb(241, 241, 241);
+        border: none;
+        border-radius: 5px;
+      }
+      #input::placeholder {
+        font-weight: bold;
+      }
+      #input:focus {
+        outline: none;
+      }
+      #user a {
+        color: rgb(29, 29, 29);
+      }
+
+      /* ----------------------------- MEDIA QUERY --------------------------- */
+
+      @media (max-width: 1300px) {
+        #collection {
+          font-size: 13px;
+        }
+        #input {
+          width: 25em;
+        }
+      }
+      @media (max-width: 1212px) {
+        #collection {
+          font-size: 13px;
+        }
+        #input {
+          width: 20em;
+        }
+        .addedToCart {
+          font-size: 1.5em;
+          margin: 10px 20px;
+        }
+      }
+
+      @media (max-width: 1090px) {
+        #container {
+          display: grid;
+          grid-template-columns: 1fr 2fr 0.5fr;
+        }
+        #search {
+          display: none;
+        }
+      }
+      @media (max-width: 750px) {
+        #shopName {
+          font-size: 28px;
+        }
+        #collection {
+          font-size: 12px;
+        }
+        .userIcon {
+          font-size: 35px;
+        }
+        .addedToCart {
+          font-size: 1.2em;
+          margin: 10px 20px;
+        }
+      }
+
+      @media (max-width: 650px) {
+        #shopName {
+          font-size: 24px;
+        }
+        #collection {
+          font-size: 10px;
+        }
+        .userIcon {
+          font-size: 30px;
+        }
+      }
+      @media (max-width: 550px) {
+        #container {
+          padding: 20px 25px;
+        }
+      }
+
+      /* badge media */
+
+      @media (max-width: 1480px) {
+        #badge {
+          right: 150px;
+        }
+      }
+      @media (max-width: 1426px) {
+        #badge {
+          right: 142px;
+        }
+      }
+      @media (max-width: 1360px) {
+        #badge {
+          right: 136px;
+        }
+      }
+      @media (max-width: 1320px) {
+        #badge {
+          right: 129px;
+        }
+      }
+      @media (max-width: 1259px) {
+        #badge {
+          right: 119px;
+        }
+      }
+      @media (max-width: 1212px) {
+        #badge {
+          right: 96px;
+        }
+      }
+      @media (max-width: 1155px) {
+        #badge {
+          right: 87px;
+        }
+      }
+      @media (max-width: 1090px) {
+        #badge {
+          right: 119px;
+        }
+      }
+      @media (max-width: 1030px) {
+        #badge {
+          right: 109px;
+        }
+      }
+      @media (max-width: 970px) {
+        #badge {
+          right: 100px;
+        }
+      }
+      @media (max-width: 910px) {
+        #badge {
+          right: 94px;
+        }
+      }
+      @media (max-width: 850px) {
+        #badge {
+          right: 87px;
+        }
+      }
+      @media (max-width: 750px) {
+        #badge {
+          right: 87px;
+          padding: 3px 6px;
+          font-size: 12px;
+          top: 12px;
+        }
+      }
+      @media (max-width: 650px) {
+        #badge {
+          right: 78px;
+        }
+      }
+      @media (max-width: 550px) {
+        #badge {
+          right: 62px;
+          top: 18px;
+        }
+      }
+    </style>
+    <header>
+      <section>
+        <!-- MAIN CONTAINER -->
+        <div id="container">
+          <!-- SHOP NAME -->
+          <div id="shopName">
+            <a href="index.html"> <b>SHOP</b>LANE </a>
+          </div>
+          <!-- COLLCETIONS ON WEBSITE -->
+          <div id="collection">
+            <div id="clothing"><a href="clothing.html"> CLOTHING </a></div>
+            <div id="accessories">
+              <a href="accessories.html"> ACCESSORIES </a>
+            </div>
+          </div>
+          <!-- SEARCH SECTION -->
+          <div id="search">
+            <i class="fas fa-search search"></i>
+            <input
+              type="text"
+              id="input"
+              name="searchBox"
+              placeholder="Search for Clothing and Accessories"
+            />
+          </div>
+          <!-- USER SECTION (CART AND USER ICON) -->
+          <div id="user">
+            <a href="#">
+              <i class="fas fa-shopping-cart addedToCart"
+                ><div id="badge">0</div></i
+              ></a
+            >
+            <a href="#" aria-label="Profile">
+              <i class="fas fa-user-circle userIcon"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </header>
     <!-- SLIDER -->
     <style>
       body {
@@ -274,16 +542,141 @@
     </div>
 
     <!-- FOOTER -->
-    <div id="4"></div>
-    <script>
-      load("footer.html");
-      function load(url) {
-        req = new XMLHttpRequest();
-        req.open("GET", url, false);
-        req.send(null);
-        document.getElementById(4).innerHTML = req.responseText;
+    <style>
+      #containerFooter {
+        width: 100%;
+        background-color: rgb(29, 29, 29);
+        color: white;
+        letter-spacing: 1px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        text-transform: uppercase;
+        font-size: 15px;
+        padding: 15px 300px;
+        box-sizing: border-box;
       }
-    </script>
+      #containerFooter h3:hover,
+      #containerFooter p:hover {
+        color: lightslategray;
+        cursor: pointer;
+      }
+      #webFooter {
+        padding-top: 30px;
+        font-size: 12px;
+      }
+      #credit {
+        width: 100%;
+        margin: auto;
+        padding: 20px 0;
+        text-align: center;
+        background-color: rgb(29, 29, 29);
+        color: white;
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+
+      #credit a {
+        color: white;
+        text-decoration: none;
+        position: relative;
+      }
+      #credit a::after {
+        content: "";
+        background: white;
+        mix-blend-mode: exclusion;
+        width: calc(100% + 18px);
+        height: 0;
+        position: absolute;
+        bottom: -4px;
+        left: -10px;
+        transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+      #credit a:hover::after {
+        height: calc(100% + 8px);
+      }
+
+      /* ----------------------------- MEDIA QUERY --------------------------- */
+
+      @media (max-width: 1350px) {
+        #containerFooter {
+          padding: 15px 200px;
+        }
+      }
+      @media (max-width: 1166px) {
+        #containerFooter {
+          padding: 15px 100px;
+        }
+      }
+      @media (max-width: 950px) {
+        #containerFooter {
+          padding: 15px 50px;
+        }
+      }
+      @media (max-width: 850px) {
+        #containerFooter {
+          font-size: 13px;
+        }
+        #webFooter {
+          font-size: 10px;
+        }
+      }
+      @media (max-width: 750px) {
+        #containerFooter {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 15px 100px;
+        }
+        #webFooter {
+          padding: 15px 20px;
+        }
+      }
+      @media (max-width: 540px) {
+        #containerFooter {
+          padding: 0 25px;
+        }
+      }
+    </style>
+    <footer>
+      <section>
+        <div id="containerFooter">
+          <div id="webFooter">
+            <h3>online store</h3>
+            <p>men clothing</p>
+            <p>women clothing</p>
+            <p>men accessories</p>
+            <p>women accessories</p>
+          </div>
+          <div id="webFooter">
+            <h3>helpful link</h3>
+            <p>home</p>
+            <p>about</p>
+            <p>contact</p>
+          </div>
+          <div id="webFooter">
+            <h3>partners</h3>
+            <p>zara</p>
+            <p>pantaloons</p>
+            <p>levis</p>
+            <p>ucb</p>
+            <p>+ many more</p>
+          </div>
+          <div id="webFooter">
+            <h3>address</h3>
+            <p>building 101</p>
+            <p>central avenue</p>
+            <p>la - 902722</p>
+            <p>united states</p>
+          </div>
+        </div>
+        <div id="credit">
+          <a href="https://linkedin.com/in/priyanka-sharma-b79401142">
+            © Priyanka Sharma
+          </a>
+          &nbsp; | &nbsp;
+          <a href="https://www.edyoda.com/" target="_blank"> EDYODA </a>
+        </div>
+      </section>
+    </footer>
   </body>
 
   <!-- content JS -->
