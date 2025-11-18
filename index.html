@@ -28,7 +28,6 @@
 
       gtag("config", "TAG_ID");
     </script>
-    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Lato&display=swap"
       rel="stylesheet"
@@ -90,25 +89,33 @@
     <section>
       <div id="containerSlider">
         <div id="slidingImage">
-          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img1.png -->
           <img
-            src="img/img1.png"
+            src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img1.png"
             loading="eager"
             fetchpriority="high"
             alt="image1"
           />
         </div>
         <div id="slidingImage">
-          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721347/fh-salzburg/web-performance/img2.png -->
-          <img src="img/img2.png" loading="lazy" alt="image2" />
+          <img
+            src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721347/fh-salzburg/web-performance/img2.png"
+            loading="lazy"
+            alt="image2"
+          />
         </div>
         <div id="slidingImage">
-          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img3.png -->
-          <img src="img/img3.png" loading="lazy" alt="image3" />
+          <img
+            src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img3.png"
+            loading="lazy"
+            alt="image3"
+          />
         </div>
         <div id="slidingImage">
-          <!-- https://res.cloudinary.com/dbfn5lnvx/image/upload/v1760721348/fh-salzburg/web-performance/img4.png -->
-          <img src="img/img4.png" loading="lazy" alt="image4" />
+          <img
+            src="https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto,f_auto/v1760721348/fh-salzburg/web-performance/img4.png"
+            loading="lazy"
+            alt="image4"
+          />
         </div>
       </div>
     </section>
@@ -125,19 +132,130 @@
         });
       });
     </script>
-
-    <!-- CONTENT SECTION -->
-    <div id="3"></div>
-    <script>
-      load("content.html");
-      function load(url) {
-        req = new XMLHttpRequest();
-        req.open("GET", url, false);
-        req.send(null);
-        document.getElementById(3).innerHTML = req.responseText;
+    <style>
+      h1 {
+        width: 90%;
+        margin: auto;
+        padding: 50px 0;
+        letter-spacing: 2px;
+        font-weight: 700;
+        text-transform: capitalize;
       }
-    </script>
+      #containerClothing,
+      #containerAccessories {
+        display: grid;
+        grid-gap: 70px 20px;
+        grid-template-columns: repeat(5, 1fr);
+        width: 90%;
+        margin: auto;
+        padding-bottom: 40px;
+      }
+      #box {
+        width: 100%;
+        background-color: white;
+        align-content: center;
+        border-radius: 10px;
+        box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+      }
+      #box:hover {
+        box-shadow: 1px 6px 3px 0 rgb(185, 185, 185);
+      }
+      #containerClothing img {
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      #containerAccessories img {
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      #details {
+        padding: 0 15px;
+        text-transform: capitalize;
+      }
+      #box a {
+        text-decoration: none;
+        color: rgb(29, 29, 29);
+      }
+      h3 {
+        font-size: 16px;
+      }
+      h4 {
+        font-weight: 100;
+      }
+      h2 {
+        color: rgb(3, 94, 94);
+      }
 
+      /* ----------------------------- MEDIA QUERY --------------------------- */
+
+      @media (max-width: 1070px) {
+        h1 {
+          font-size: 25px;
+        }
+        #containerClothing,
+        #containerAccessories {
+          width: 95%;
+          grid-gap: 10px;
+        }
+      }
+      @media (max-width: 850px) {
+        h1 {
+          width: 80%;
+        }
+        #containerClothing,
+        #containerAccessories {
+          display: grid;
+          grid-gap: 70px 20px;
+          grid-template-columns: repeat(3, 1fr);
+          width: 80%;
+        }
+      }
+      @media (max-width: 650px) {
+        h1 {
+          font-size: 20px;
+        }
+        h1 {
+          width: 90%;
+        }
+        #containerClothing,
+        #containerAccessories {
+          width: 90%;
+        }
+      }
+      @media (max-width: 600px) {
+        h1 {
+          width: 70%;
+        }
+        #containerClothing,
+        #containerAccessories {
+          width: 70%;
+        }
+      }
+      @media (max-width: 505px) {
+        h1 {
+          width: 80%;
+        }
+        #containerClothing,
+        #containerAccessories {
+          width: 80%;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+
+    <div id="mainContainer">
+      <h1>clothing for men and women</h1>
+      <div id="containerClothing">
+        <!-- JS rendered code -->
+      </div>
+
+      <h1>accessories for men and women</h1>
+      <div id="containerAccessories">
+        <!-- JS rendered code -->
+      </div>
+    </div>
     <div style="max-width: 90vw; margin-inline: auto">
       <iframe
         width="560"
