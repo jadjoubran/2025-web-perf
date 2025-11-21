@@ -1,4 +1,5 @@
 import QRCode from "qrcode";
+import "lite-youtube-embed";
 
 let contentTitle;
 
@@ -39,7 +40,7 @@ function dynamicClothingSection(ob) {
   detailsDiv.appendChild(h4);
   detailsDiv.appendChild(h2);
 
-  boxDiv.onclick = function (event) {
+  boxDiv.onclick = async function (event) {
     event.preventDefault();
     boxDiv.style.opacity = "0.7";
 
