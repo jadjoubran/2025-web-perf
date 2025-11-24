@@ -1,4 +1,3 @@
-import QRCode from "qrcode";
 import "lite-youtube-embed";
 
 let contentTitle;
@@ -98,10 +97,13 @@ function dynamicClothingSection(ob) {
         relatedImg.style.border = "3px solid black";
         void relatedImg.getBoundingClientRect();
 
-        QRCode.toCanvas(
-          canvas,
-          window.location.origin + "/contentDetails.html?" + ob.id
-        );
+        await globalThis.scheduler?.yield?.();
+        import("qrcode").then(({ default: QRCode }) => {
+          QRCode.toCanvas(
+            canvas,
+            window.location.origin + "/contentDetails.html?" + ob.id
+          );
+        });
       }
       dialog.appendChild(canvas);
     }
@@ -176,7 +178,9 @@ httpRequest.send();
 
 var canvas = document.getElementById("qrcode-canvas");
 
-QRCode.toCanvas(canvas, "https://google.com", function (error) {
-  if (error) console.error(error);
-  console.log("success!");
+import("qrcode").then(({ default: QRCode }) => {
+  QRCode.toCanvas(canvas, "https://google.com", function (error) {
+    if (error) console.error(error);
+    console.log("success!");
+  });
 });
